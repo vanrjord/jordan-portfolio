@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Array Product Development | Jordan Vanriel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #f0fdfa, #ecfeff);
+    }
+    .floating-gallery {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      overflow: hidden;
+      z-index: 20;
+    }
+    .gallery-track {
+      display: flex;
+      flex-direction: column;
+      animation: scroll-vertically 30s linear infinite;
+    }
+    .left-gallery {
+      left: 0;
+    }
+    .right-gallery {
+      right: 0;
+    }
+    .floating-gallery img {
+      margin: 12px 0;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 80px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+    .floating-gallery img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes scroll-vertically {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  </style>
+</head>
+<body class="text-gray-800 font-sans">
+
+  <!-- Floating Image Galleries -->
+  <div class="floating-gallery left-gallery">
+    <div class="gallery-track">
+      <img src="gallery1.jpg" alt="Gallery Image 1" onclick="openLightbox(this.src)" />
+      <img src="gallery2.jpg" alt="Gallery Image 2" onclick="openLightbox(this.src)" />
+      <img src="gallery3.jpg" alt="Gallery Image 3" onclick="openLightbox(this.src)" />
+      <img src="gallery1.jpg" alt="Gallery Image 1" onclick="openLightbox(this.src)" />
+      <img src="gallery2.jpg" alt="Gallery Image 2" onclick="openLightbox(this.src)" />
+      <img src="gallery3.jpg" alt="Gallery Image 3" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+
+  <div class="floating-gallery right-gallery">
+    <div class="gallery-track">
+      <img src="gallery4.jpg" alt="Gallery Image 4" onclick="openLightbox(this.src)" />
+      <img src="gallery5.jpg" alt="Gallery Image 5" onclick="openLightbox(this.src)" />
+      <img src="gallery6.jpg" alt="Gallery Image 6" onclick="openLightbox(this.src)" />
+      <img src="gallery4.jpg" alt="Gallery Image 4" onclick="openLightbox(this.src)" />
+      <img src="gallery5.jpg" alt="Gallery Image 5" onclick="openLightbox(this.src)" />
+      <img src="gallery6.jpg" alt="Gallery Image 6" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+
+  <!-- Lightbox Viewer -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Expanded view" />
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow p-6 sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Project Title 2</h1>
+      <a href="index.html" class="text-sm text-blue-600 hover:underline">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <main class="max-w-4xl mx-auto p-6 relative z-10">
+    <section class="mb-6">
+      <img src="project2.jpg" alt="Project 2 Banner" class="w-full rounded-lg shadow-lg mb-4">
+      <h2 class="text-xl font-semibold text-green-800">Overview</h2>
+      <p class="text-gray-700 leading-relaxed mt-2">
+        This project served as an invaluable experience in taking an industrial product from conception to production. I was part of a small team developing Mosaic's first industrial-targeted product, Array. During the prototyping phase, I was involved in designing, sourcing parts, building, and testing the components. Throughout this process, I went through seven design cycles, progressing from prototype to pilot production.
+      </p>
+      <p class="text-gray-700 leading-relaxed mt-2">
+        I collaborated with the contract manufacturer (CM) to develop an assembly line for Array and its subsystems. This included creating standard operating procedures (SOPs), implementing quality checks, designing fixtures, conducting time studies, and developing packaging. Once production commenced, I was responsible for supporting the CM to ensure timely product deliveries. I also played a key role in many retrofits while we continued to develop the product in the field.
+      </p>
+      <p class="text-gray-700 leading-relaxed mt-2">
+        This product cycle significantly enhanced my knowledge and skills in various areas, including product management, design for manufacturing, scaling from prototype to production, bill of materials (BOM) management, and overall product management. This experience has been crucial as I progress in my career.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-green-800">Technical Challenges</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+        <li><strong>Timelines:</strong> Meeting deadlines and customer commitments was difficult. We had to be flexible and adaptive as new issues emerged.</li>
+        <li><strong>First-Time Experience:</strong> Many team members were going through their first full product cycle. The absence of mentorship early on led to avoidable errors.</li>
+        <li><strong>Pilot Run:</strong> Designs didn’t initially account for different user personas (e.g., aging users, non-native English speakers), which surfaced during CM manufacturing.</li>
+        <li><strong>Unique Product Development:</strong> With no existing reference products, we had to rely on engineering intuition and thorough testing.</li>
+        <li><strong>Scope Creep:</strong> Expanding scope during development increased testing demands and prolonged lead times.</li>
+      </ul>
+      <h3 class="text-lg font-semibold mt-4 text-green-700">Methodologies & Tools</h3>
+      <p class="text-gray-700 mt-2">
+        Designs followed iterative cycles: sketch → CAD → sourcing → testing → redesign. During production, we launched engineering workstreams for documentation alignment and reliability testing to address edge cases.
+      </p>
+      <p class="text-gray-700 mt-2">
+        <strong>Tools used:</strong> SolidWorks, Excel/VBA, Smartsheets, hand tools
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-green-800">Solutions and Results</h2>
+      <p class="text-gray-700 mt-2">
+        <strong>Timelines:</strong> Learned to use Smartsheet for better project scoping and realistic timeline management.
+      </p>
+      <p class="text-gray-700 mt-2">
+        <strong>First-Time Experience:</strong> Mentorship in time management accelerated delivery and improved overall quality. Each misstep became a learning milestone.
+      </p>
+      <p class="text-gray-700 mt-2">
+        <strong>Pilot Run:</strong> Our iterative improvement cycle led to rapid refinements and validated a novel product category. Consistent testing confirmed functionality and alignment with product expectations.
+      </p>
+      <p class="text-gray-700 mt-2">
+        Overall, the team fostered a culture of resilience, constant iteration, and data-driven improvement that resulted in a successful, market-ready product.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-800">Reflection</h2>
+      <p class="text-gray-700 mt-2">
+        This experience taught me the importance of flexibility in planning, how to balance speed, cost, and quality, and the value of mentorship. I learned that successful product development requires consideration of manufacturing, maintainability, and repairability—not just innovation.
+      </p>
+      <p class="text-gray-700 mt-2">
+        As I move forward in my career, these insights guide my aspiration to create my own fabrication shop and build meaningful, well-designed products. I’ve also developed leadership and relationship-building skills that I’ll carry with me into future roles.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-center text-sm text-gray-500 pb-4 z-10 relative">
+    &copy; 2025 Jordan Vanriel — Designed for the Future
+  </footer>
+
+  <!-- Lightbox Script -->
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.style.display = 'flex';
+    }
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
