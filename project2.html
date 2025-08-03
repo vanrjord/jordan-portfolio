@@ -16,6 +16,7 @@
       width: 15vw;
       overflow-y: auto;
       z-index: 20;
+      user-select: none;
     }
     .gallery-track {
       display: flex;
@@ -71,18 +72,24 @@
 </head>
 <body class="text-gray-800 font-sans">
   <!-- Floating Image Galleries -->
-  <div class="floating-gallery left-gallery">
+  <div class="floating-gallery left-gallery" id="leftGallery">
     <div class="gallery-track">
       <img src="helium1.PNG" alt="Concept Sketch" onclick="openLightbox(this.src)" />
       <img src="helium2.HEIC" alt="Composite Layup" onclick="openLightbox(this.src)" />
       <img src="helium3.HEIC" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
+      <img src="helium8.JPG" alt="Concept Sketch" onclick="openLightbox(this.src)" />
+      <img src="helium9.HEIC" alt="Composite Layup" onclick="openLightbox(this.src)" />
+      <img src="helium10.jpeg" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
     </div>
   </div>
-  <div class="floating-gallery right-gallery">
+  <div class="floating-gallery right-gallery" id="rightGallery">
     <div class="gallery-track">
       <img src="helium4.HEIC" alt="Final Assembly" onclick="openLightbox(this.src)" />
       <img src="helium5.JPG" alt="GoFly Competition" onclick="openLightbox(this.src)" />
       <img src="helium6.jpg" alt="Full-scale Vehicle" onclick="openLightbox(this.src)" />
+      <img src="helium11.PNG" alt="Concept Sketch" onclick="openLightbox(this.src)" />
+      <img src="helium12.HEIC" alt="Composite Layup" onclick="openLightbox(this.src)" />
+      <img src="helium13.jpeg" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
     </div>
   </div>
 
@@ -142,14 +149,13 @@
       <p class="text-gray-700 mt-2 text-sm md:text-base">
         This experience taught me how to lead a multidisciplinary team, manage rapid prototyping, and build functional aerospace-grade systems under real-world constraints. It deepened my passion for hands-on engineering and led to my long-term goal: establishing a fabrication shop to help early-stage design teams prototype and manufacture effectively.
       </p>
-    </section>
-  </main>
+    </section>  </main>
 
   <footer class="mt-12 text-center text-sm text-gray-500 pb-4 z-10 relative">
     &copy; 2025 Jordan Vanriel — Designed for the Future
   </footer>
 
-  <!-- Lightbox Script -->
+  <!-- Lightbox & Drag Scroll Script -->
   <script>
     function openLightbox(src) {
       const lightbox = document.getElementById('lightbox');
@@ -161,6 +167,41 @@
       const lightbox = document.getElementById('lightbox');
       lightbox.style.display = 'none';
     }
+
+    function enableVerticalDragScroll(containerId) {
+      const container = document.getElementById(containerId);
+      let isDragging = false;
+      let startY;
+      let scrollTop;
+
+      container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        container.classList.add('dragging');
+        startY = e.pageY - container.offsetTop;
+        scrollTop = container.scrollTop;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+
+      container.addEventListener('mouseup', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+
+      container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const y = e.pageY - container.offsetTop;
+        const walk = (y - startY) * 1; // scroll speed multiplier
+        container.scrollTop = scrollTop - walk;
+      });
+    }
+
+    enableVerticalDragScroll('leftGallery');
+    enableVerticalDragScroll('rightGallery');
   </script>
 </body>
 </html>
