@@ -3,50 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project: Helium EVTOL</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Helium EVTOL Project | Jordan Vanriel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    body {
+      background: linear-gradient(to right, #f0fdfa, #ecfeff);
+    }
     .floating-gallery {
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 100px;
+      width: auto;
       overflow: hidden;
-      z-index: 10;
+      z-index: 20;
     }
-    .floating-gallery.left {
-      left: 0;
-    }
-    .floating-gallery.right {
-      right: 0;
-    }
-    .floating-gallery-track {
+    .gallery-track {
       display: flex;
       flex-direction: column;
-      animation: scrollUp 30s linear infinite;
+      animation: scroll-vertically 30s linear infinite;
     }
-    @keyframes scrollUp {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+    .left-gallery {
+      left: 0;
+    }
+    .right-gallery {
+      right: 0;
     }
     .floating-gallery img {
-      width: 80px;
-      height: auto;
-      margin: 10px;
+      margin: 12px 0;
       cursor: pointer;
-      border-radius: 0.375rem;
+      border-radius: 8px;
+      width: 250px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+    .floating-gallery img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes scroll-vertically {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
     }
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 50;
-      left: 0;
+      z-index: 9999;
       top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0,0,0,0.8);
-      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
+      align-items: center;
     }
     .lightbox img {
       max-width: 90%;
@@ -54,78 +61,97 @@
     }
   </style>
 </head>
-<body class="bg-green-50 text-gray-800 font-sans">
-  <div class="floating-gallery left">
-    <div class="floating-gallery-track">
-      <img src="gallery1.jpg" alt="Gallery 1" onclick="openLightbox(this.src)">
-      <img src="gallery2.jpg" alt="Gallery 2" onclick="openLightbox(this.src)">
-      <img src="gallery3.jpg" alt="Gallery 3" onclick="openLightbox(this.src)">
-      <img src="gallery1.jpg" alt="Gallery 1" onclick="openLightbox(this.src)">
-      <img src="gallery2.jpg" alt="Gallery 2" onclick="openLightbox(this.src)">
-      <img src="gallery3.jpg" alt="Gallery 3" onclick="openLightbox(this.src)">
+<body class="text-gray-800 font-sans">
+  <!-- Floating Image Galleries -->
+  <div class="floating-gallery left-gallery">
+    <div class="gallery-track">
+      <img src="helium1.jpg" alt="Concept Sketch" onclick="openLightbox(this.src)" />
+      <img src="helium2.jpg" alt="Composite Layup" onclick="openLightbox(this.src)" />
+      <img src="helium3.jpg" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
     </div>
   </div>
-  <div class="floating-gallery right">
-    <div class="floating-gallery-track">
-      <img src="gallery4.jpg" alt="Gallery 4" onclick="openLightbox(this.src)">
-      <img src="gallery5.jpg" alt="Gallery 5" onclick="openLightbox(this.src)">
-      <img src="gallery6.jpg" alt="Gallery 6" onclick="openLightbox(this.src)">
-      <img src="gallery4.jpg" alt="Gallery 4" onclick="openLightbox(this.src)">
-      <img src="gallery5.jpg" alt="Gallery 5" onclick="openLightbox(this.src)">
-      <img src="gallery6.jpg" alt="Gallery 6" onclick="openLightbox(this.src)">
+  <div class="floating-gallery right-gallery">
+    <div class="gallery-track">
+      <img src="helium4.jpg" alt="Final Assembly" onclick="openLightbox(this.src)" />
+      <img src="helium5.jpg" alt="GoFly Competition" onclick="openLightbox(this.src)" />
+      <img src="helium6.jpg" alt="Full-scale Vehicle" onclick="openLightbox(this.src)" />
     </div>
   </div>
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Enlarged">
+
+  <!-- Lightbox Viewer -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Expanded view" />
   </div>
 
-  <main class="max-w-4xl mx-auto py-10 px-6">
-    <h1 class="text-4xl font-bold text-center mb-6">Helium EVTOL Vehicle Development</h1>
+  <header class="bg-white shadow p-6 sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Helium EVTOL Project</h1>
+      <a href="index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Portfolio</a>
+    </div>
+  </header>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">Overview</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Helium was a design team I founded with a group of friends at university. Our focus was on developing an EVTOL (Electric Vertical Takeoff and Landing) vehicle for the GoFly competition in California. This experience provided me with valuable education in design, leadership, and product management. I led the UX and cockpit design team, where we designed and developed the user controls, center console, and seating arrangements. My leadership in the manufacturing process enabled us to rapidly create a full-scale vehicle using composite layups and CNC tooling.
+  <main class="max-w-4xl mx-auto p-6 relative z-10">
+    <section class="mb-6">
+      <img src="Linkedin Banner - Array & Element 1584px .png" alt="Project Banner" class="w-full rounded-lg shadow-lg mb-4">
+      <h2 class="text-xl font-semibold text-green-800">Overview</h2>
+      <p class="text-gray-700 leading-relaxed mt-2">
+        Helium was a student-led design team I co-founded at university, focused on developing an electric vertical takeoff and landing (EVTOL) aircraft for the GoFly competition in California. I led the UX and cockpit design team, where we created the user controls, center console, and seating arrangements. I also took an active role in the manufacturing process, using composite layups and CNC tooling to help bring our full-scale vehicle to life on an aggressive timeline.
       </p>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">Technical Challenges</h2>
-      <ul class="list-disc pl-5 text-gray-700">
-        <li><strong>Timelines:</strong> Balancing schoolwork while working on this project was challenging but essential. Weekly planning was critical to building and testing effectively.</li>
-        <li><strong>Cost / Budgets:</strong> We secured grants from our school and became highly efficient with planning to manage limited funding.</li>
-        <li><strong>Space to Build:</strong> We used four different workspaces on campus, which encouraged spatial efficiency.</li>
-        <li><strong>Build / Manufacturing:</strong> We learned composite layups, mold making, and CNC machining through hands-on assembly line work.</li>
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-green-800">Technical Challenges</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+        <li><strong>Timelines:</strong> Balancing academics with project deadlines required strong planning and weekly alignment meetings. We completed a full-scale vehicle in two months.</li>
+        <li><strong>Cost/Budget:</strong> We secured funding through grants and university connections. This supported the build of a small-scale, half-scale, and full-scale drone, as well as travel to California.</li>
+        <li><strong>Space:</strong> I helped secure a large campus makerspace. We efficiently managed work across four build areas.</li>
+        <li><strong>Build Process:</strong> We used assembly lines, learned composite layups, and operated CNC machines to fabricate custom foam components.</li>
       </ul>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">Methodologies & Tools</h2>
-      <p class="text-gray-700">We used school-based design methods like component embodiments, personas, and simulations. Tools included Fusion 360, Excel/VBA, CNC machining, hand tools, composite layups, and 3D printing.</p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">Solutions and Results</h2>
-      <p class="text-gray-700">
-        We overcame time constraints with transparent communication and weekly planning, completing manufacturing in two months. Grant funding allowed us to build multiple drone prototypes and fund team travel. By utilizing multiple build spaces and developing skills in composite manufacturing and CNC, we delivered a full-scale EVTOL prototype and gained mentorship-supported insights throughout.
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mt-4 text-green-700">Design & Testing Methodologies</h3>
+      <p class="text-gray-700 mt-2">
+        We applied foundational design techniques such as component embodiments, user personas, CAD modeling, and simulation. Constraints limited us to full-system testing, which became a core part of our evaluation.
+      </p>
+      <p class="text-gray-700 mt-2">
+        <strong>Tools used:</strong> Fusion 360, Excel/VBA, Hand tools, CNC machines, Composite layups, 3D printing
       </p>
     </section>
 
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-2">Reflection</h2>
-      <p class="text-gray-700">
-        I learned how to manage a team of peers, build innovative technology, and lead manufacturing under tight constraints. This experience confirmed my passion for hands-on fabrication and inspired my goal of opening a fabrication shop to support design teams with technical builds.
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-green-800">Solutions and Results</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+        <li><strong>Timelines:</strong> Our disciplined planning enabled us to deliver the final vehicle in two months.</li>
+        <li><strong>Funding:</strong> Strategic grant applications and partnerships funded materials and travel.</li>
+        <li><strong>Space:</strong> Utilizing four workspaces forced us to optimize every inch of build area.</li>
+        <li><strong>Manufacturing:</strong> We scaled our learning curve through mentor guidance, efficient assembly line setups, and use of digital fabrication tools.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-800">Reflection</h2>
+      <p class="text-gray-700 mt-2">
+        This experience taught me how to lead a multidisciplinary team, manage rapid prototyping, and build functional aerospace-grade systems under real-world constraints. It deepened my passion for hands-on engineering and led to my long-term goal: establishing a fabrication shop to help early-stage design teams prototype and manufacture effectively.
       </p>
     </section>
   </main>
 
+  <footer class="mt-12 text-center text-sm text-gray-500 pb-4 z-10 relative">
+    &copy; 2025 Jordan Vanriel — Designed for the Future
+  </footer>
+
+  <!-- Lightbox Script -->
   <script>
     function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').style.display = 'flex';
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.style.display = 'flex';
     }
     function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
     }
   </script>
 </body>
