@@ -14,21 +14,14 @@
       top: 0;
       bottom: 0;
       width: 15vw;
-      overflow: hidden;
+      overflow-y: auto;
       z-index: 20;
     }
     .gallery-track {
       display: flex;
       flex-direction: column;
-      animation: scroll-vertically 30s linear infinite;
-    }
-    .floating-gallery:hover .gallery-track {
-      animation-play-state: paused;
-    }
-    .gallery-track::after {
-      content: "";
-      display: flex;
-      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 0;
     }
     .left-gallery {
       left: 0;
@@ -37,7 +30,6 @@
       right: 0;
     }
     .floating-gallery img {
-      margin: 1rem 0;
       cursor: pointer;
       border-radius: 0.5rem;
       width: 12vw;
@@ -47,9 +39,12 @@
     .floating-gallery img:hover {
       transform: scale(1.05);
     }
-    @keyframes scroll-vertically {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100%); }
+    .floating-gallery::-webkit-scrollbar {
+      width: 8px;
+    }
+    .floating-gallery::-webkit-scrollbar-thumb {
+      background-color: rgba(100, 100, 100, 0.4);
+      border-radius: 4px;
     }
     .lightbox {
       display: none;
