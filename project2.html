@@ -3,63 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Title 2 | Jordan Vanriel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Project: Helium EVTOL</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(to right, #f0fdfa, #ecfeff);
+    .floating-gallery {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .floating-gallery.left {
+      left: 0;
+    }
+    .floating-gallery.right {
+      right: 0;
+    }
+    .floating-gallery-track {
+      display: flex;
+      flex-direction: column;
+      animation: scrollUp 30s linear infinite;
+    }
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .floating-gallery img {
+      width: 80px;
+      height: auto;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 0.375rem;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
     }
   </style>
 </head>
-<body class="text-gray-800 font-sans">
-
-  <!-- Header -->
-  <header class="bg-white shadow p-6 sticky top-0 z-50">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Project Title 2</h1>
-      <a href="index.html" class="text-sm text-blue-600 hover:underline">← Back to Portfolio</a>
+<body class="bg-green-50 text-gray-800 font-sans">
+  <div class="floating-gallery left">
+    <div class="floating-gallery-track">
+      <img src="gallery1.jpg" alt="Gallery 1" onclick="openLightbox(this.src)">
+      <img src="gallery2.jpg" alt="Gallery 2" onclick="openLightbox(this.src)">
+      <img src="gallery3.jpg" alt="Gallery 3" onclick="openLightbox(this.src)">
+      <img src="gallery1.jpg" alt="Gallery 1" onclick="openLightbox(this.src)">
+      <img src="gallery2.jpg" alt="Gallery 2" onclick="openLightbox(this.src)">
+      <img src="gallery3.jpg" alt="Gallery 3" onclick="openLightbox(this.src)">
     </div>
-  </header>
+  </div>
+  <div class="floating-gallery right">
+    <div class="floating-gallery-track">
+      <img src="gallery4.jpg" alt="Gallery 4" onclick="openLightbox(this.src)">
+      <img src="gallery5.jpg" alt="Gallery 5" onclick="openLightbox(this.src)">
+      <img src="gallery6.jpg" alt="Gallery 6" onclick="openLightbox(this.src)">
+      <img src="gallery4.jpg" alt="Gallery 4" onclick="openLightbox(this.src)">
+      <img src="gallery5.jpg" alt="Gallery 5" onclick="openLightbox(this.src)">
+      <img src="gallery6.jpg" alt="Gallery 6" onclick="openLightbox(this.src)">
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged">
+  </div>
 
-  <!-- Project Content -->
-  <main class="max-w-4xl mx-auto p-6">
-    <section class="mb-6">
-      <img src="project2.jpg" alt="Project 2 Banner" class="w-full rounded-lg shadow-lg mb-4">
-      <h2 class="text-xl font-semibold text-green-800">Overview</h2>
-      <p class="text-gray-700 leading-relaxed mt-2">
-        Provide an engaging summary of the project here—especially focusing on its environmental or sustainable aspects if applicable.
-        This intro sets the tone for your solarpunk and innovation-focused brand.
+  <main class="max-w-4xl mx-auto py-10 px-6">
+    <h1 class="text-4xl font-bold text-center mb-6">Helium EVTOL Vehicle Development</h1>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Overview</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Helium was a design team I founded with a group of friends at university. Our focus was on developing an EVTOL (Electric Vertical Takeoff and Landing) vehicle for the GoFly competition in California. This experience provided me with valuable education in design, leadership, and product management. I led the UX and cockpit design team, where we designed and developed the user controls, center console, and seating arrangements. My leadership in the manufacturing process enabled us to rapidly create a full-scale vehicle using composite layups and CNC tooling.
       </p>
     </section>
 
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold text-green-800">Engineering Approach</h2>
-      <ul class="list-disc list-inside text-gray-700 mt-2">
-        <li>What problem did you solve and how?</li>
-        <li>Include mechanical, electrical, or software innovations.</li>
-        <li>Mention tools used (CAD, simulation, scripting, etc.).</li>
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Technical Challenges</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li><strong>Timelines:</strong> Balancing schoolwork while working on this project was challenging but essential. Weekly planning was critical to building and testing effectively.</li>
+        <li><strong>Cost / Budgets:</strong> We secured grants from our school and became highly efficient with planning to manage limited funding.</li>
+        <li><strong>Space to Build:</strong> We used four different workspaces on campus, which encouraged spatial efficiency.</li>
+        <li><strong>Build / Manufacturing:</strong> We learned composite layups, mold making, and CNC machining through hands-on assembly line work.</li>
       </ul>
     </section>
 
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold text-green-800">Outcomes</h2>
-      <p class="text-gray-700 mt-2">
-        Detail your final deliverables, metrics, or impact. Did you validate a hypothesis? Improve throughput? Enable better sustainability?
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Methodologies & Tools</h2>
+      <p class="text-gray-700">We used school-based design methods like component embodiments, personas, and simulations. Tools included Fusion 360, Excel/VBA, CNC machining, hand tools, composite layups, and 3D printing.</p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Solutions and Results</h2>
+      <p class="text-gray-700">
+        We overcame time constraints with transparent communication and weekly planning, completing manufacturing in two months. Grant funding allowed us to build multiple drone prototypes and fund team travel. By utilizing multiple build spaces and developing skills in composite manufacturing and CNC, we delivered a full-scale EVTOL prototype and gained mentorship-supported insights throughout.
       </p>
     </section>
 
-    <section>
-      <h2 class="text-xl font-semibold text-green-800">Next Steps</h2>
-      <p class="text-gray-700 mt-2">
-        Discuss what’s next for the project or how it could scale. Consider how this aligns with a better, more ecologically harmonious future.
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-2">Reflection</h2>
+      <p class="text-gray-700">
+        I learned how to manage a team of peers, build innovative technology, and lead manufacturing under tight constraints. This experience confirmed my passion for hands-on fabrication and inspired my goal of opening a fabrication shop to support design teams with technical builds.
       </p>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="mt-12 text-center text-sm text-gray-500 pb-4">
-    &copy; 2025 Jordan Vanriel — Designed for the Future
-  </footer>
-
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
