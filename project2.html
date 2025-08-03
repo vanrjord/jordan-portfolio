@@ -22,6 +22,17 @@
       flex-direction: column;
       animation: scroll-vertically 30s linear infinite;
     }
+    .floating-gallery:hover .gallery-track {
+      animation-play-state: paused;
+    }
+    .gallery-track::after {
+      content: "";
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-track > img {
+      margin: 12px 0;
+    }
     .left-gallery {
       left: 0;
     }
@@ -41,7 +52,7 @@
     }
     @keyframes scroll-vertically {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+      100% { transform: translateY(-100%); }
     }
     .lightbox {
       display: none;
@@ -68,10 +79,16 @@
       <img src="helium1.PNG" alt="Concept Sketch" onclick="openLightbox(this.src)" />
       <img src="helium2.HEIC" alt="Composite Layup" onclick="openLightbox(this.src)" />
       <img src="helium3.HEIC" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
+      <img src="helium1.PNG" alt="Concept Sketch" onclick="openLightbox(this.src)" />
+      <img src="helium2.HEIC" alt="Composite Layup" onclick="openLightbox(this.src)" />
+      <img src="helium3.HEIC" alt="CNC Foam Machining" onclick="openLightbox(this.src)" />
     </div>
   </div>
   <div class="floating-gallery right-gallery">
     <div class="gallery-track">
+      <img src="helium4.HEIC" alt="Final Assembly" onclick="openLightbox(this.src)" />
+      <img src="helium5.JPG" alt="GoFly Competition" onclick="openLightbox(this.src)" />
+      <img src="helium6.jpg" alt="Full-scale Vehicle" onclick="openLightbox(this.src)" />
       <img src="helium4.HEIC" alt="Final Assembly" onclick="openLightbox(this.src)" />
       <img src="helium5.JPG" alt="GoFly Competition" onclick="openLightbox(this.src)" />
       <img src="helium6.jpg" alt="Full-scale Vehicle" onclick="openLightbox(this.src)" />
