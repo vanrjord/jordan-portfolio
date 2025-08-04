@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flugtag Glider Project | Jordan Vanriel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #bcdff4, #d8edff);
+    }
+    .floating-gallery {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 15vw;
+      overflow-y: auto;
+      z-index: 20;
+      user-select: none;
+    }
+    .gallery-track {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .left-gallery {
+      left: 0;
+    }
+    .right-gallery {
+      right: 0;
+    }
+    .floating-gallery img {
+      cursor: pointer;
+      border-radius: 0.5rem;
+      width: 12vw;
+      height: auto;
+      transition: transform 0.3s;
+    }
+    .floating-gallery img:hover {
+      transform: scale(1.05);
+    }
+    .floating-gallery::-webkit-scrollbar {
+      width: 8px;
+    }
+    .floating-gallery::-webkit-scrollbar-thumb {
+      background-color: rgba(100, 100, 100, 0.4);
+      border-radius: 4px;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    @media (max-width: 768px) {
+      .floating-gallery {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-800 font-sans">
+  <!-- Floating Image Galleries -->
+  <div class="floating-gallery left-gallery" id="leftGallery">
+    <div class="gallery-track">
+      <img src="flugtag1.jpg" alt="Initial Build" onclick="openLightbox(this.src)" />
+      <img src="flugtag2.jpg" alt="Wing Frame" onclick="openLightbox(this.src)" />
+      <img src="flugtag3.jpg" alt="Hot Wire Foam Cut" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+  <div class="floating-gallery right-gallery" id="rightGallery">
+    <div class="gallery-track">
+      <img src="flugtag4.jpg" alt="Completed Glider" onclick="openLightbox(this.src)" />
+      <img src="flugtag5.jpg" alt="Event Day" onclick="openLightbox(this.src)" />
+      <img src="flugtag6.jpg" alt="Team Photo" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+
+  <!-- Lightbox Viewer -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Expanded view" />
+  </div>
+
+  <header class="bg-white shadow p-6 sticky top-0 z-40 w-full">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center">
+      <h1 class="text-xl md:text-2xl font-bold">Flugtag Glider Project</h1>
+      <a href="index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 md:px-6 py-8 relative z-10">
+    <section class="mb-6">
+      <img src="flugtag-banner.jpg" alt="Project Banner" class="w-full rounded-lg shadow-lg mb-4">
+      <h2 class="text-lg font-semibold mt-4 text-blue-700">Overview</h2>
+      <p class="text-gray-700 leading-relaxed mt-2 text-sm md:text-base">
+        Flugtag was a design and build competition held by Red Bull. A group of friends and I designed and built a vehicle that could be pushed off a ledge, releasing a glider that would fly into the water. The goal was to glide the furthest distance possible. This competition was a fun way to apply the engineering knowledge we had acquired in school.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold mt-4 text-blue-700">Technical Challenges</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2 text-sm md:text-base">
+        <li><strong>Building with Limited Equipment:</strong> We completed the build in a friend's garage using limited tools. Instead of CNC, we used a handheld hot wire cutter to shape foam ribs and PVC piping to construct the body due to lack of machining tools.</li>
+        <li><strong>Lack of Testing:</strong> Because the vehicle would be destroyed after the competition, we built only one and relied on CAD modeling and calculations to plan it effectively.</li>
+        <li><strong>Human Pilot:</strong> The glider had to carry a real person. We had to ensure structural integrity while maintaining a safe ejection mechanism.</li>
+      </ul>
+    </section>
+
+    <section class="mb-6">
+      <h3 class="text-lg font-semibold mt-4 text-blue-700">Design & Testing Methodologies</h3>
+      <p class="text-gray-700 mt-2 text-sm md:text-base">
+        We used simulation software in Fusion 360 to test the strength of the wings and overall frame. We also referenced images from previous Flugtag teams to benchmark our design and safety concepts.
+      </p>
+      <p class="text-gray-700 mt-2 text-sm md:text-base">
+        <strong>Tools used:</strong> Fusion 360, SolidWorks, Excel/VBA, hand tools, hot wire cutting, 3D printing, and physical prototyping.
+      </p>
+    </section>
+
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold mt-4 text-blue-700">Solutions and Results</h2>
+      <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2 text-sm md:text-base">
+        <li><strong>Limited Equipment:</strong> We adapted by selecting materials that required minimal machining.</li>
+        <li><strong>Lack of Testing:</strong> Our simulations and modeling replaced physical prototyping, saving time and resources.</li>
+        <li><strong>Space to Build:</strong> We organized four distinct work areas to streamline the build process.</li>
+        <li><strong>Human Pilot:</strong> Simulation tools helped us design a structure capable of safely holding a rider during flight and splashdown.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mt-4 text-blue-700">Reflection</h2>
+      <p class="text-gray-700 mt-2 text-sm md:text-base">
+        You can create impressive projects with minimal materials. It would be beneficial to build several prototypes to better test their strength and flight capabilities. I enjoyed participating in events that allow me to apply my experiences. Projects like this are the kind of work I want to support in the future in my own fabrication shop.
+      </p>
+    </section>
+  </main>
+
+  <footer class="mt-12 text-center text-sm text-gray-500 pb-4 z-10 relative">
+    &copy; 2025 Jordan Vanriel — Designed for the Future
+  </footer>
+
+  <!-- Lightbox & Drag Scroll Script -->
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.style.display = 'flex';
+    }
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+    }
+
+    function enableVerticalDragScroll(containerId) {
+      const container = document.getElementById(containerId);
+      let isDragging = false;
+      let startY;
+      let scrollTop;
+
+      container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        container.classList.add('dragging');
+        startY = e.pageY - container.offsetTop;
+        scrollTop = container.scrollTop;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+
+      container.addEventListener('mouseup', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+
+      container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const y = e.pageY - container.offsetTop;
+        const walk = (y - startY) * 1;
+        container.scrollTop = scrollTop - walk;
+      });
+    }
+
+    enableVerticalDragScroll('leftGallery');
+    enableVerticalDragScroll('rightGallery');
+  </script>
+</body>
+</html>
